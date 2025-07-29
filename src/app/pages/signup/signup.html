@@ -1,0 +1,47 @@
+<app-default-login-layout
+  title="Sign in and start today!"
+  primaryBtnText="Signup Now"
+  secondaryBtnText="Login Now"
+  (submit)="submit()"
+  (navigate)="navigate()"
+  [disablePrimaryBtn]="!signupForm.valid"
+>
+  <form [formGroup]="signupForm">
+    <app-primary-input
+      formControlName="name"
+      type="text"
+      inputName="name"
+      placeholder="John Doe"
+      label="Your name"
+    >
+      <img ngSrc="./email.svg" alt="password" width="24" height="24">
+    </app-primary-input>
+    <app-primary-input
+      formControlName="email"
+      type="email"
+      inputName="email"
+      placeholder="johndoe@mail.com"
+      label="Email"
+    >
+      <img ngSrc="./email.svg" alt="password" width="24" height="24">
+    </app-primary-input>
+    <app-primary-input
+      formControlName="password"
+      inputName="password"
+      type="password"
+      placeholder="Enter your password"
+      label="Password"
+    >
+      <img ngSrc="./lock.svg" alt="password" width="24" height="24">
+    </app-primary-input>
+        <app-primary-input
+      formControlName="passwordConfirm"
+      inputName="passwordConfirm"
+      type="password"
+      placeholder="Confirm Password"
+      label="Confirm Your Password"
+    >
+      <img ngSrc="./lock.svg" alt="password" width="24" height="24">
+    </app-primary-input>
+  </form>
+</app-default-login-layout>
