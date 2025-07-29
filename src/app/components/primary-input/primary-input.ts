@@ -8,19 +8,39 @@ type InputTypes = "text" | "email" | "password"
   imports: [ReactiveFormsModule],
   templateUrl: './primary-input.html',
   styleUrl: './primary-input.scss',
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => PrimaryInput),
+      multi: true
+    }
+  ]
 })
 
-export class PrimaryInput {
+export class PrimaryInput implements ControlValueAccessor{
 
   @Input() type: InputTypes = "text";
   @Input() placeholder: string = "";
   @Input() label: string = "";
-  @Input() formName: string = "";
+  @Input() inputName: string = "";
 
-  constructor() {}
+  value: string = "";
+  onChange: any = () => {}
+  onTouched: any = () => {}
 
-  loginForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.minLength(6)])
-  })
+  onInput(event: Event) {
+    const value = (event.target as HTMLInputElement).value
+    this.onChange(value);
+  }
+
+  writeValue(obj: any): void {
+    this.value = obj;
+  }
+  registerOnChange(fn: any): void {
+    this.onChange = fn;
+  }
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
+  setDisabledState?(isDisabled: boolean): void {}
 }

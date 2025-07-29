@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { DefaultLoginLayout } from '../../components/default-login-layout/default-login-layout';
-import { EmailValidator, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PrimaryInput } from '../../components/primary-input/primary-input';
 import { NgOptimizedImage } from '@angular/common';
 
@@ -18,5 +18,9 @@ export class Login {
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required, Validators.minLength(8)])
     });
+  }
+
+  submit(){
+    console.log(this.loginForm.value);
   }
 }

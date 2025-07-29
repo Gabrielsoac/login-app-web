@@ -2,18 +2,21 @@
   title="Login into your account"
   primaryBtnText="Login Now"
   secondaryBtnText="Signup Now"
+  (submit)="submit()"
 >
   <form [formGroup]="loginForm">
     <app-primary-input
+      formControlName="email"
       type="email"
-      formName="email"
+      inputName="email"
       placeholder="johndoe@mail.com"
       label="Email"
     >
       <img ngSrc="./email.svg" alt="password" width="24" height="24">
     </app-primary-input>
     <app-primary-input
-      formName="password"
+      formControlName="password"
+      inputName="password"
       type="password"
       placeholder="Enter your password"
       label="Password"
